@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -38,7 +39,8 @@ import com.example.logintrip.ui.theme.LoginTripTheme
 @Composable
 fun TelaHome(){
     Column (
-        modifier = Modifier.background(Color(0xFFEAEAF0))
+        modifier = Modifier
+            .background(Color(0xFFEAEAF0))
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
@@ -72,18 +74,31 @@ fun TelaHome(){
                     fontSize = 20.sp,
                     color = Color.Gray
                 )
+                LazyRow(modifier = Modifier.fillMaxWidth()){
+                    items(2) {
+                        Card (
+                            modifier = Modifier
+                                .padding(10.dp)
+                                .height(100.dp)
+                                .width(150.dp),
+                            colors = CardDefaults
+                                .cardColors(containerColor = Color.Magenta
+                                )
+                        ){
+                            Image(
+                                painter = painterResource(id = R.drawable.montain),
+                                contentDescription = "",
+                                contentScale = ContentScale.Crop
+                            )
+                            Text(
+                                text = "Montain",
+                                fontSize = 16.sp,
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
 
-            Card (
-                modifier = Modifier
-                    .padding(10.dp)
-                    .height(100.dp)
-                    .width(150.dp),
-                colors = CardDefaults
-                    .cardColors(containerColor = Color.Magenta
-                    )
-            ){
-
-            }
             Row (
                 modifier = Modifier.width(350.dp),
                 horizontalArrangement = Arrangement.Center
@@ -145,7 +160,7 @@ fun TelaHome(){
                                 modifier = Modifier
                                     .height(70.dp)
                                     .width(360.dp)
-                                    .padding(top = 3.dp, start = 0.dp,end = 0.dp, bottom = 0.dp)
+                                    .padding(top = 3.dp, start = 0.dp, end = 0.dp, bottom = 0.dp)
                             )
                             {
                                 Image(
