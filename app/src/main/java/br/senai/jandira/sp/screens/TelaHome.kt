@@ -157,7 +157,7 @@ fun TelaHome(){
                                 verticalArrangement = Arrangement.Center
                             ){
                                 Image(
-                                    painter = painterResource(id = R.drawable.mountain),
+                                    painter = it.imagem!!,
                                     contentDescription = "",
                                     contentScale = ContentScale.Crop
                                 )
@@ -165,7 +165,7 @@ fun TelaHome(){
                                     text = it.titulo,
                                     fontSize = 16.sp,
                                     color = Color.White,
-                                    fontWeight = FontWeight.Bold
+                                    fontWeight = FontWeight.Medium
                                 )
                             }
 

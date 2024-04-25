@@ -152,7 +152,7 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                     ) {
                         Button(
                             onClick = {
-                                if (emailState.value == "aluno" && senhaState.value == "1234"){
+                                if (emailState.value == "viajante" && senhaState.value == "1234"){
                                     mensagemErroState.value = ""
                                     controleDeNavegacao.navigate("home")
                                 } else {
