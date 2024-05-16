@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -69,13 +70,13 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                     .padding(start = 20.dp)
             ) {
                 Text(
-                    text = "Login",
+                    text = stringResource(id = R.string.login_in),
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = 60.sp,
                     color = Color.Magenta
                 )
                 Text(
-                    text = "Please sign in to continue",
+                    text = stringResource(id = R.string.please_sign),
                     color = Color.Gray
                 )
                 OutlinedTextField(value = emailState.value,
@@ -97,7 +98,7 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                                 .height(30.dp)
                         )
                         Text(
-                            text = "Email",
+                            text = stringResource(id = R.string.email_new),
                             modifier = Modifier
                                 .padding(
                                     start = 34.dp,
@@ -126,7 +127,7 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                                 .height(30.dp)
                         )
                         Text(
-                            text = "Senha",
+                            text = stringResource(id = R.string.password_new),
                             modifier = Modifier
                                 .padding(
                                     start = 34.dp,
@@ -165,18 +166,18 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                             colors = ButtonDefaults.buttonColors(Color.Magenta)
                         ) {
                             Text(
-                                text = "SIGN IN",
+                                text = stringResource(id = R.string.sign_in),
                                 fontWeight = FontWeight.ExtraBold,
                                 fontSize = 20.sp
                             )
                         }
                         Row(modifier = Modifier.padding(top = 10.dp)) {
                             Text(
-                                text = "Don't have an account?",
+                                text = stringResource(id = R.string.havent_account),
                                 color = Color.Gray
                             )
                             Text(
-                                text = "Sign up",
+                                text = stringResource(id = R.string.sign_up),
                                 color = Color.Magenta,
                                 fontWeight = FontWeight.ExtraBold,
                                 modifier = Modifier.clickable {

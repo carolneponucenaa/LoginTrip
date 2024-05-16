@@ -37,6 +37,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -81,7 +82,7 @@ fun TelaHome(){
                         contentDescription = "Botao de Busca",
                         tint = Color.White
                     )
-                    Text(text = "YOU'RE IN PARIS",
+                    Text(text = stringResource(id = R.string.where_name),
                         color = Color.White,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Normal,
@@ -91,7 +92,7 @@ fun TelaHome(){
                 Box(modifier = Modifier
                     .padding(16.dp)
                     .align(Alignment.BottomStart)){
-                    Text(text = "My Trips",
+                    Text(text = stringResource(id = R.string.title_trips),
                         color = Color.White,
                         fontSize = 30.sp,
                         fontWeight = FontWeight.Bold,
@@ -135,7 +136,7 @@ fun TelaHome(){
                     .fillMaxWidth(),
             ) {
                 Text(
-                    text = "Categories",
+                    text = stringResource(id = R.string.categories_trips),
                     fontWeight = FontWeight.Light,
                     fontSize = 20.sp,
                     color = Color.Gray
@@ -201,14 +202,14 @@ fun TelaHome(){
                     },
                     placeholder = {
                         Text(
-                            text ="Search your destiny",
+                            text = stringResource(id = R.string.search_trips),
                             color = Color.Gray)
                     }
                 )
             }
 
             Text(
-                text = "Past Trips",
+                text = stringResource(id = R.string.past_trips),
                 fontWeight = FontWeight.Light,
                 fontSize = 20.sp,
                 color = Color.Gray

@@ -10,19 +10,25 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,6 +39,10 @@ import com.example.logintrip.ui.theme.LoginTripTheme
 
 @Composable
 fun TelaSignUp(controleDeNavegacao: NavHostController){
+
+    var isOver18State = remember {
+        mutableStateOf(false)
+    }
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -58,13 +68,13 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Sign Up",
+                    text = stringResource(id = R.string.sign_up),
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = 40.sp,
                     color = Color.Magenta
                 )
                 Text(
-                    text = "Create a new account",
+                    text = stringResource(id = R.string.create_account),
                     color = Color.Gray
                 )
                 Box(modifier = Modifier
@@ -101,7 +111,7 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                                 .height(30.dp)
                         )
                         Text(
-                            text = "Username",
+                            text = stringResource(id = R.string.username_new),
                             modifier = Modifier
                                 .padding(
                                     start = 34.dp,
@@ -128,7 +138,7 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                                 .height(30.dp)
                         )
                         Text(
-                            text = "Phone",
+                            text = stringResource(id = R.string.phone_new),
                             modifier = Modifier
                                 .padding(
                                     start = 34.dp,
@@ -149,13 +159,13 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                     label = {
                         Image(
                             painterResource(id = R.drawable.email),
-                            contentDescription = "Email",
+                            contentDescription = stringResource(id = R.string.email_new),
                             modifier = Modifier
                                 .width(30.dp)
                                 .height(30.dp)
                         )
                         Text(
-                            text = "Email",
+                            text = stringResource(id = R.string.email_new),
                             modifier = Modifier
                                 .padding(
                                     start = 34.dp,
@@ -176,13 +186,13 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                     label = {
                         Image(
                             painterResource(id = R.drawable.senha),
-                            contentDescription = "Senha",
+                            contentDescription = stringResource(id = R.string.password_new),
                             modifier = Modifier
                                 .width(30.dp)
                                 .height(30.dp)
                         )
                         Text(
-                            text = "Senha",
+                            text = stringResource(id = R.string.password_new),
                             modifier = Modifier
                                 .padding(
                                     start = 34.dp,
@@ -191,6 +201,23 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                         )
                     }
                 )
+                Row (
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Start,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .offset(x = -10.dp, y = 10.dp)
+                        .padding(start = 25.dp)
+                ){
+                    Checkbox(checked =  isOver18State.value ,
+                        onCheckedChange = {opcao -> isOver18State.value = opcao},
+                        colors = CheckboxDefaults.colors(Color.Magenta)
+                    )
+                    Text(
+                        text = stringResource(id = R.string.over_eighteen),
+                        color = Color.Gray)
+                }
+
                 Row(
                     modifier = Modifier
                         .width(400.dp)
@@ -208,18 +235,18 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                             colors = ButtonDefaults.buttonColors(Color.Magenta)
                         ) {
                             Text(
-                                text = "CREATE ACCOUNT",
+                                text = stringResource(id = R.string.create_account),
                                 fontWeight = FontWeight.ExtraBold,
                                 fontSize = 20.sp
                             )
                         }
                         Row(modifier = Modifier.padding(top = 10.dp)) {
                             Text(
-                                text = "Already have an account?",
+                                text = stringResource(id = R.string.have_account),
                                 color = Color.Gray
                             )
                             Text(
-                                text = "Sign in",
+                                text = stringResource(id = R.string.sign_in),
                                 color = Color.Magenta,
                                 fontWeight = FontWeight.ExtraBold,
                                         modifier = Modifier.clickable {
