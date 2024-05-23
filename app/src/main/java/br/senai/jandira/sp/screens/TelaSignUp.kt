@@ -27,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -35,11 +36,27 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.logintrip.R
+import com.example.logintrip.model.Cadastro
+import com.example.logintrip.repository.CadastroRepository
 import com.example.logintrip.ui.theme.LoginTripTheme
 
 @Composable
 fun TelaSignUp(controleDeNavegacao: NavHostController){
 
+    val cr = CadastroRepository(LocalContext.current)
+
+    var userState = remember {
+        mutableStateOf("")
+    }
+    var phoneState = remember {
+        mutableStateOf("")
+    }
+    var emailState = remember {
+        mutableStateOf("")
+    }
+    var passwordState = remember {
+        mutableStateOf("")
+    }
     var isOver18State = remember {
         mutableStateOf(false)
     }
@@ -94,8 +111,10 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                             .width(70.dp)
                     )
                 }
-                OutlinedTextField(value = "",
-                    onValueChange = {},
+                OutlinedTextField(value = userState.value,
+                    onValueChange = {
+                                    userState.value = it
+                    },
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = Color.Magenta,
                         unfocusedBorderColor = Color.Magenta
@@ -120,8 +139,10 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                         )
                     }
                 )
-                OutlinedTextField(value = "",
-                    onValueChange = {},
+                OutlinedTextField(value = phoneState.value,
+                    onValueChange = {
+                        phoneState.value = it
+                    },
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = Color.Magenta,
                         unfocusedBorderColor = Color.Magenta
@@ -147,8 +168,10 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                         )
                     }
                 )
-                OutlinedTextField(value = "",
-                    onValueChange = {},
+                OutlinedTextField(value = emailState.value,
+                    onValueChange = {
+                        emailState.value = it
+                    },
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = Color.Magenta,
                         unfocusedBorderColor = Color.Magenta
@@ -174,8 +197,10 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                         )
                     }
                 )
-                OutlinedTextField(value = "",
-                    onValueChange = {},
+                OutlinedTextField(value = passwordState.value,
+                    onValueChange = {
+                        passwordState.value = it
+                    },
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = Color.Magenta,
                         unfocusedBorderColor = Color.Magenta
@@ -228,7 +253,15 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                         horizontalAlignment = Alignment.End
                     ) {
                         Button(
-                            onClick = { controleDeNavegacao.navigate("login") },
+                            onClick = { val cadastro = Cadastro(
+                                nome = userState.value,
+                                telefone = phoneState.value,
+                                email = emailState.value,
+                                senha = passwordState.value,
+                                overEighteen = isOver18State.value
+                            )
+                                cr.salvar(cadastro)
+                                      },
                             modifier = Modifier
                                 .width(300.dp)
                                 .height(50.dp),
