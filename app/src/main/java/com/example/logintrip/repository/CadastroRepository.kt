@@ -11,7 +11,6 @@ class CadastroRepository (context: Context){
         fun salvar (contato: Cadastro):Long{
             return db.salvar(contato)
        }
-
         fun listarTodosOsCadastros(): List<Cadastro>{
            return db.listarTodosOsCadastros()
         }

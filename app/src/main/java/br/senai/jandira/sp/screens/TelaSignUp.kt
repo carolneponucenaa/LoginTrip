@@ -60,7 +60,6 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
         mutableStateOf(false)
     }
 
-
     Column(
         modifier = Modifier
             .fillMaxSize(),

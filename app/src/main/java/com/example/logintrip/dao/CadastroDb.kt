@@ -27,7 +27,6 @@ abstract class CadastroDb(): RoomDatabase() {
 
             return instancia
         }
-
     }
 
 }

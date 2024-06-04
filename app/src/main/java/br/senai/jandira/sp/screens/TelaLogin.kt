@@ -59,6 +59,7 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                     color = Color.Magenta,
                     shape = RoundedCornerShape(bottomStart = 25.dp)
                 )
+
         ) {}
         Box(
             modifier = Modifier
