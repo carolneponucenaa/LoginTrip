@@ -42,7 +42,6 @@ import com.example.logintrip.ui.theme.LoginTripTheme
 
 @Composable
 fun TelaSignUp(controleDeNavegacao: NavHostController){
-
     val cr = CadastroRepository(LocalContext.current)
 
     var userState = remember {
@@ -60,6 +59,8 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
     var isOver18State = remember {
         mutableStateOf(false)
     }
+
+
     Column(
         modifier = Modifier
             .fillMaxSize(),
