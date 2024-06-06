@@ -270,7 +270,10 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                             Text(
                                 text = stringResource(id = R.string.create_account),
                                 fontWeight = FontWeight.ExtraBold,
-                                fontSize = 20.sp
+                                fontSize = 20.sp,
+                                modifier = Modifier.clickable {
+                                    controleDeNavegacao.navigate("login")
+                                }
                             )
                         }
                         Row(modifier = Modifier.padding(top = 10.dp)) {
@@ -284,7 +287,7 @@ fun TelaSignUp(controleDeNavegacao: NavHostController){
                                 fontWeight = FontWeight.ExtraBold,
                                         modifier = Modifier.clickable {
                                     controleDeNavegacao.navigate("login")
-                                }
+                                },
                             )
                         }
                     }

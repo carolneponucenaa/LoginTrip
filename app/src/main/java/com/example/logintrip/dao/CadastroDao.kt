@@ -1,5 +1,6 @@
 package com.example.logintrip.dao
 
+import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -23,4 +24,7 @@ interface CadastroDao {
 
     @Query("SELECT * FROM tbl_cadastro WHERE id = :id")
     fun buscarContatoPeloId(id: Long):Cadastro
+
+    @Query("SELECT * FROM tbl_cadastro WHERE email = :email AND senha=:senha")
+    fun logar (email: String, senha: String):Boolean
 }

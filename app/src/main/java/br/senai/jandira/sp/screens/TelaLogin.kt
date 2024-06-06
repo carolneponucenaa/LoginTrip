@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -33,10 +34,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.logintrip.R
+import com.example.logintrip.repository.CadastroRepository
 import com.example.logintrip.ui.theme.LoginTripTheme
 
 @Composable
 fun TelaLogin(controleDeNavegacao: NavHostController) {
+    val cr = CadastroRepository(LocalContext.current)
     var emailState = remember {
         mutableStateOf("")
     }
@@ -154,11 +157,15 @@ fun TelaLogin(controleDeNavegacao: NavHostController) {
                     ) {
                         Button(
                             onClick = {
-                                if (emailState.value == "viajante" && senhaState.value == "1234"){
-                                    mensagemErroState.value = ""
-                                    controleDeNavegacao.navigate("home")
-                                } else {
+                                if (emailState.value == "" && senhaState.value == ""){
                                     mensagemErroState.value = "E-mail ou senha incorretos!"
+                                }
+                                else {
+                                    val usuario = cr.validaLogin(emailState.value, senhaState.value)
+
+                                    if(usuario){
+                                        controleDeNavegacao.navigate("home")
+                                    }
                                 }
                             },
                             modifier = Modifier
